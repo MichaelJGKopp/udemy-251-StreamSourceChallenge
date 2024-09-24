@@ -42,14 +42,14 @@ public class Main {
     var streamO = Stream.generate(Main::getCounter) // side effects
       .limit(15)
       .map(i -> "O" + i);
-    streamO.forEach(System.out::println);
+//    streamO.forEach(System.out::println);
 
     var streamBI = Stream.concat(streamB, streamI);
     var streamNG = Stream.concat(streamN, streamG);
     var streamBING = Stream.concat(streamBI, streamNG);
     var streamBINGO = Stream.concat(streamBING, streamO);
 
-//    streamBINGO.forEach(System.out::println);
+    streamBINGO.forEach(System.out::println);
   }
 
   private static int getCounter() {
