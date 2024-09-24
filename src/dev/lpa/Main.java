@@ -1,6 +1,7 @@
 package dev.lpa;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.stream.Stream;
 
 public class Main {
@@ -38,9 +39,18 @@ public class Main {
         "G56", "G57", "G58", "G59", "G60");
 //    streamG.forEach(System.out::println);
 
-    counter = seed += 15;
-    var streamO = Stream.generate(Main::getCounter) // side effects
+//    counter = seed += 15;
+//    var streamO = Stream.generate(Main::getCounter) // side effects
+//      .limit(15)
+//      .map(i -> "O" + i);
+////    streamO.forEach(System.out::println);
+
+    int seedCopy2 = seed += 15;
+    var streamO = Stream.generate(
+      () -> new Random().nextInt(seedCopy2, seedCopy2 + 15))
+      .distinct()
       .limit(15)
+      .sorted()
       .map(i -> "O" + i);
 //    streamO.forEach(System.out::println);
 
